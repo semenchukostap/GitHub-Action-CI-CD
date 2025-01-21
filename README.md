@@ -1,53 +1,21 @@
-# Passing arguments to an action
+# Chapter 03_04
 
-In this lesson, arguments are passed to the following actions:
+- Create a repository on GitHub using the [New Repository](https://github.com/new) page.  Name it something that relates to the lesson like `exercise-files`.
 
-- [actions/checkout](https://github.com/actions/checkout)
-- [actions/setup-java](https://github.com/actions/setup-java)
+- In a terminal, run the following commands to initialize the directory as a git repository.
 
-```
-name: Build Tomcat
+        git init
+        git add .
+        git commit -m 'first check in'
 
-on: [push]
+- Now add the new repository you created as a remote for the local repo.
 
-jobs:
-  build:
+        git remote add origin git@github.com:YOUR_GITHUB_USER_NAME_HERE/exercise-files.git
 
-    runs-on: ubuntu-latest
+- After the remote is added, push the files to the remote.
 
-    steps:
-    - name: Check out tomcat-users.xml
-      uses: actions/checkout@v2
+        git push -u origin master
 
-    - name: List project files and java version
-      run: |
-          ls -ltr
-          java -version
+ - Browse to the repository on GitHub.com and reload the page to confirm the files have been properly pushed.
 
-    - name: Check out Apache Tomcat
-      uses: actions/checkout@v2
-      with:
-        repository: apache/tomcat # Repository name with owner
-        ref: master               # The branch, tag or SHA to checkout
-        path: ./tomcat            # Relative path under $GITHUB_WORKSPACE
-
-    - name: Setup Java 9
-      uses: actions/setup-java@v1
-      with:
-        java-version: '9.0.4'     # The JDK version to make available on the path
-        java-package: jdk         # (jre, jdk, or jdk+fx) - defaults to jdk
-        architecture: x64         # (x64 or x86) - defaults to x64
-
-    - name: List project files and java version
-      run: |
-          ls -ltr
-          java -version
-
-    - name: Copy tomcat-users.xml into Tomcat configuration directory
-      run: cp -v tomcat-users.xml ./tomcat/conf/tomcat-users.xml
-
-    - name: Compile Tomcat
-      run: |
-        cd ./tomcat
-        ant
-```
+Once the files are hosted on GitHub.com, you're ready to start making changes locally and pushing them to the remote repo.
