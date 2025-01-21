@@ -10,7 +10,7 @@ jobs:
             - name: Step one
               uses: actions/checkout@v2
             - name: Step two
-              run: echo date
+              run: date
     job2:
         name: Second Job
         runs-on: windows-latest
@@ -18,7 +18,7 @@ jobs:
             - name: Step one
               uses: actions/checkout@v2
             - name: Step two
-              run: echo %date%
+              run: date
     job3:
         name: Third Job
         runs-on: macos-latest
@@ -26,7 +26,7 @@ jobs:
             - name: Step one
               uses: actions/checkout@v2
             - name: Step two
-              run: echo date
+              run: date
     job4:
         name: Fourth Job
         runs-on: macos-latest
@@ -35,4 +35,4 @@ jobs:
             - name: Step one
               uses: actions/checkout@v2
             - name: Step two
-              run: echo date
+              run: date
