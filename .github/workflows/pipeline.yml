@@ -7,9 +7,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup Python environment
-      uses: actions/setup-python@v4
+    - uses: actions/checkout@v2
     - name: Run script
       run: python hello.py
 
@@ -17,8 +15,9 @@ jobs:
     needs: [test]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Create an artifact of repository
       uses: actions/upload-artifact@v4
       with:
-        name: source
+        name: hello
+        path: .
